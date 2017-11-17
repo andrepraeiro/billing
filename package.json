@@ -1,0 +1,27 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --require babel-register",
+    "compile": "npx babel src --out-dir lib",
+    "start": "npm run compile && node ./lib/app.js"
+  },
+  "keywords": [],
+  "author": "Andre Praeiro",
+  "license": "ISC"
+}
