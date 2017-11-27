@@ -27,7 +27,7 @@ export class AggregateRoot {
         else if (!opt.isNew || !opt.child)
             opt = {
                 child: !opt.child ? this : opt.child,
-                isNew: !opt.isNew ? true : opt.isNew
+                isNew: opt.isNew == undefined ? true : opt.isNew
             }
         return opt
     }
@@ -35,11 +35,11 @@ export class AggregateRoot {
     applyChange(event, opt) {
         opt = this.getOptions(opt)
         opt.child.apply(event);
-        if (opt.isNew)
-            this.changes.push(event)
+        if (opt.isNew === true)         
+            this.changes.push(event)                            
     }
 
-    apply(event) {
-        throw new Error('Apply(event) Not implemented')
-    }
+    //apply(event) {
+    //    throw new Error('Apply(event) Not implemented')
+    //}
 }

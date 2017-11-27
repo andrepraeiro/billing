@@ -7,7 +7,7 @@ export class Order extends AggregateRoot {
     constructor(id, date, customerId) {
         super()
         this.type = 'Order'
-        this.id = null
+        this.id = id
         this.date = null
         this.customerId = null
         if (id) {            
