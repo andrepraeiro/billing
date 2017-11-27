@@ -25,5 +25,10 @@ export class Order extends AggregateRoot {
             }
         }
     }
+
+    changeCustomer(customerId){
+        this.customerId = customerId
+        super.applyChange(new CustomerChanged(id, customerId), {child: this})
+    }
 }
 

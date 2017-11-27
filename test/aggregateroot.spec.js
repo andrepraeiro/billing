@@ -119,17 +119,5 @@ describe('AggregateRoot', () => {
             agg.changes.length.should.equal(2)
         })    
     })
-    
-
-    // applyChange(event, opt) {
-    //     opt = this.getOptions(opt)
-    //     opt.child.apply(event);
-    //     if (opt.isNew) here
-    //         this.changes.push(event)
-    // }
-
-    
-
-
 })
 

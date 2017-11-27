@@ -23,13 +23,5 @@
   },
   "keywords": [],
   "author": "Andre Praeiro",
-  "license": "ISC",
-
-  "nyc": {
-    "include": [
-      "src/**/*.js"
-    ],
-    "sourceMap": false,
-    "instrument": false
-  }
+  "license": "ISC"
 }

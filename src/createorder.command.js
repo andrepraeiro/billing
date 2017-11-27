@@ -1,4 +1,3 @@
-import {Repository} from './repository'
 
 export class CreateOrderCommand {
     constructor(id, orderDate, customerId){
