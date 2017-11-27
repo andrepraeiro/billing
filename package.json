@@ -1,6 +1,6 @@
 {
-  "name": "test1",
-  "version": "1.0.0",
+  "name": "billing",
+  "version": "0.0.1",
   "description": "",
   "main": "./lib/app.js",
   "directories": {
