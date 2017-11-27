@@ -1,4 +1,4 @@
-import { AggregateRoot } from './aggregateRoot'
+import { AggregateRoot } from './aggregateroot'
 
 export class Repository {
 

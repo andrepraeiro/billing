@@ -35,7 +35,7 @@ export class AggregateRoot {
     applyChange(event, opt) {
         opt = this.getOptions(opt)
         opt.child.apply(event);
-        if (opt.isNew === true)         
+        if (opt.isNew)         
             this.changes.push(event)                            
     }
 

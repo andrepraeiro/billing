@@ -1,4 +1,4 @@
-import { AggregateRoot } from './aggregateRoot'
+import { AggregateRoot } from './aggregateroot'
 import { OrderCreated } from './ordercreated.event'
 
 export class Order extends AggregateRoot {

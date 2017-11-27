@@ -6,7 +6,7 @@ export class OrderCreated extends Event {
     }
     
     constructor(id, date, customerId) {
-        /* istanbul ignore next */;
+        
         super()        
         this.eventData = { version: 1, name: OrderCreated.name(), date: new Date() }
         this.id = id

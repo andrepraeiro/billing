@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../src/aggregateRoot'
+import { AggregateRoot } from '../src/aggregateroot'
 import { MockEvent } from './mockevent'
 
 export class MockAggregate extends AggregateRoot {
