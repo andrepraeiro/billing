@@ -1,6 +1,6 @@
-import { AggregateRoot } from './aggregateroot'
-import { OrderCreated } from './ordercreated.event'
-import { CustomerChanged } from './customerChanged.event'
+import { AggregateRoot } from '../aggregateroot'
+import { OrderCreated } from '../../Events/ordercreated.event'
+import { CustomerChanged } from '../../Events/customerchanged.event'
 
 export class Order extends AggregateRoot {
 

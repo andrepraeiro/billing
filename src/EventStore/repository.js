@@ -1,4 +1,4 @@
-import { AggregateRoot } from './aggregateroot'
+import { AggregateRoot } from '../Domain/aggregateroot'
 import { DynamicAggregate } from './dynamicaggregate'
 
 export class Repository {

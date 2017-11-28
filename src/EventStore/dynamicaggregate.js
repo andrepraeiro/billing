@@ -1,5 +1,5 @@
-import {Order} from './order.aggregate'
-import {MockAggregate} from '../test/mockaggregate'
+import {Order} from '../Domain/Order/order.aggregate'
+import {MockAggregate} from '../../test/Mocks/mockaggregate'
 
 export class DynamicAggregate {
             

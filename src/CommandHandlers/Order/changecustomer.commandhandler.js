@@ -1,4 +1,4 @@
-import { Order } from './order.aggregate'
+import { Order } from '../../Domain/Order/order.aggregate'
 
 export class ChangeCustomerCommandHandler {
     constructor(repository) {

@@ -1,4 +1,3 @@
-
 export class CreateOrderCommand {
     constructor(id, orderDate, customerId){
         this.id = id

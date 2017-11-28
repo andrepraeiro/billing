@@ -1,17 +1,17 @@
 import chai from 'chai'
 import path from 'path'
-import { MockRepository } from './mockrepository'
-import { CreateOrderCommand } from '../src/createorder.command'
-import { CreateOrderCommandHandler } from '../src/createorder.commandhandler'
-import { ChangeCustomerCommand } from '../src/changecustomer.command'
-import { ChangeCustomerCommandHandler } from '../src/changecustomer.commandhandler'
-import { generateUUID } from '../src/uuidgenerator'
-import { Order} from '../src/order.aggregate'
+import { MockRepository } from './Mocks/mockrepository'
+import { CreateOrderCommand } from '../src/Commands/Order/createorder.command'
+import { CreateOrderCommandHandler } from '../src/CommandHandlers/Order/createorder.commandhandler'
+import { ChangeCustomerCommand } from '../src/Commands/Order/changecustomer.command'
+import { ChangeCustomerCommandHandler } from '../src/CommandHandlers/Order/changecustomer.commandhandler'
+import { generateUUID } from '../src/Common/uuidgenerator'
+import { Order} from '../src/Domain/Order/order.aggregate'
 
 chai.should()
 
 describe('ChangeCustomerCommandHandler', () => {
-    describe('constructor', () => {
+    describe('create order and change customer of order', () => {
         let repository = new MockRepository();
         let CreateComHand  = new CreateOrderCommandHandler(repository);
         let ChangeComHand  = new ChangeCustomerCommandHandler(repository);
@@ -25,25 +25,25 @@ describe('ChangeCustomerCommandHandler', () => {
         CreateComHand.handle(createMessage)                    
         aggregate = ChangeComHand.handle(changeMessage)
         
-        it('Save item into repository', () => {
+        it('aggregate in storage should have two events', () => {
             let e = repository.storage.getEventsForAggregate(id)            
             e.length.should.equal(2)            
         })
-        it('Saved event aggregate id in repository should be event', () => {
+        it('id value in first event of aggregate should be equal id', () => {
             let e = repository.storage.getEventsForAggregate(id)
             e[0].id.should.equal(id)            
         })
-        it('Saved event aggregate date in repository should be event', () => {
+        it('date value in first event of aggregate should be equal date', () => {
             let e = repository.storage.getEventsForAggregate(id)
             e[0].date.should.equal(date)            
         })
 
-        it('Saved event aggregate customerId in repository should be event', () => {
+        it('aggregate first event customerId in storage should be equal customerId', () => {
             let e = repository.storage.getEventsForAggregate(id)
             e[0].customerId.should.equal(customerId)            
         })
 
-        it('Saved event aggregate customerId in repository should be new customerIs', () => {            
+        it('current aggregate customerId should be equal newCustomerId', () => {            
     
             aggregate.customerId.should.equal(newCustomerId)
         })
