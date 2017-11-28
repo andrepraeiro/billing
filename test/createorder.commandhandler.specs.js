@@ -16,9 +16,8 @@ describe('CreateOrderCommandHandler', () => {
         let date = new Date()
         let message = new CreateOrderCommand(id, date, 4508)
         let aggregate
-        beforeEach(() => {
-            aggregate = comHand.handle(message)            
-        })
+        aggregate = comHand.handle(message)            
+        
         it('Save item into repository', () => {
             let e = comHand.repository.storage.getEventsForAggregate(id)
             e.length.should.equal(1)            
@@ -42,18 +41,17 @@ describe('CreateOrderCommandHandler', () => {
         let date = new Date()
         let message = new CreateOrderCommand(id, date, 4508)
         let aggregate
-        beforeEach(() => {
-            comHand.handle(message)                        
-            aggregate = comHand.repository.getById(id, new Order())            
-        })
-        it('Aggregate id', () => {
-            aggregate.id.should.equal(id)
-        })        
+        comHand.handle(message)
+        aggregate = comHand.repository.getById(id)            
+        
+         it('Aggregate id', () => {
+             aggregate.id.should.equal(id)
+         })        
         it('Aggregate date', () => {
             aggregate.date.should.equal(date)
         })        
-        it('Aggregate customer id', () => {
-            aggregate.customerId.should.equal(4508)
-        })        
+         it('Aggregate customer id', () => {
+             aggregate.customerId.should.equal(4508)
+         })        
     })
 })

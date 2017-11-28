@@ -1,6 +1,6 @@
 import chai from 'chai'
 import path from 'path'
-import { Repository } from '../src/repository'
+import { MockRepository } from './mockrepository'
 import { MockAggregate } from './mockaggregate'
 import { MockStorage } from './mockstorage'
 import { generateUUID } from '../src/uuidgenerator'
@@ -17,7 +17,7 @@ describe('Repository', () => {
         let id = generateUUID()       
         beforeEach(() => {
             storage = new MockStorage()
-            repository = new Repository(storage)
+            repository = new MockRepository(storage)
             aggregateRoot = new MockAggregate(id)
             repository.Save(aggregateRoot,1)
         })
@@ -43,10 +43,10 @@ describe('Repository', () => {
         let id = generateUUID() 
         beforeEach(() => {
             storage = new MockStorage()
-            repository = new Repository(storage)
-            aggregateRoot = new MockAggregate(id)            
+            repository = new MockRepository(storage)
+            aggregateRoot = new MockAggregate(id)                        
             repository.Save(aggregateRoot,1)                      
-            newAggregateRoot = repository.getById(aggregateRoot.id, aggregateRoot)
+            newAggregateRoot = repository.getById(id)                        
         })
 
         it('returned AggregateRoot id from getById should be equal aggregateRoot.id', () => {                        

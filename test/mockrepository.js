@@ -1,5 +1,6 @@
 import { Repository } from '../src/repository'
 import { MockStorage } from './mockstorage'
+import { DynamicAggregate } from '../src/dynamicaggregate'
 
 export class MockRepository {
     constructor() {
@@ -10,9 +11,10 @@ export class MockRepository {
     Save(aggregate, expectedVersion) {
         this.repository.Save(aggregate, expectedVersion)        
     }
-
-    getById(id, aggregate) {
-        return this.repository.getById(id, aggregate)
+    
+    getById(id) {        
+        this.aggregate = this.repository.getById(id);
+        return this.aggregate
     }
 
 }

@@ -16,9 +16,9 @@ export class Repository {
     }
 
     getById(id) {
-        let events = this.storage.getEventsForAggregate(id)
-        let aggregate = new DynamicAggregate(events[0].type)
-        aggregate.loadsFromHistory(events)
+        let storedAggregate = this.storage.getAggregate(id)
+        let aggregate = new DynamicAggregate(storedAggregate.type)
+        aggregate.loadsFromHistory(storedAggregate.events)
         return aggregate;
     }
 

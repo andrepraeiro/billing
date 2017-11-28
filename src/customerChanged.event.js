@@ -5,7 +5,7 @@ export class CustomerChanged extends Event {
         return 'CustomerChanged'
     }
     
-    constructor(id, date, customerId) {
+    constructor(id, customerId) {
         
         super()        
         this.eventData = { version: 1, name: CustomerChanged.name(), date: new Date() }

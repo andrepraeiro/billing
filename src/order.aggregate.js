@@ -1,5 +1,6 @@
 import { AggregateRoot } from './aggregateroot'
 import { OrderCreated } from './ordercreated.event'
+import { CustomerChanged } from './customerChanged.event'
 
 export class Order extends AggregateRoot {
 
@@ -23,12 +24,15 @@ export class Order extends AggregateRoot {
                 this.customerId = event.customerId
                 break
             }
+            case CustomerChanged.name(): {
+                this.customerId = event.customerId
+                break
+            }
         }
     }
 
-    changeCustomer(customerId){
-        this.customerId = customerId
-        super.applyChange(new CustomerChanged(id, customerId), {child: this})
+    changeCustomer(customerId){        
+        super.applyChange(new CustomerChanged(this.id, customerId), {child: this})               
     }
 }
 

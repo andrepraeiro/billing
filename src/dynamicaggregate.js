@@ -1,10 +1,10 @@
 import {Order} from './order.aggregate'
+import {MockAggregate} from '../test/mockaggregate'
+
 export class DynamicAggregate {
-    
-    aggregates ={
-        Order
-    }
+            
     constructor(name, args) {
-        return new aggregates[name](args)
+        this.aggregates = { Order, MockAggregate }                
+        return new this.aggregates[name](args)
     }
 }

@@ -7,7 +7,8 @@ export class ChangeCustomerCommandHandler {
 
     handle(message) {
         let order = this.repository.getById(message.id)
-        order.changeCustomer(message.customerId)
+        order.changeCustomer(message.customerId)     
+        this.repository.Save(order, -1)           
         return order
     }
 }
