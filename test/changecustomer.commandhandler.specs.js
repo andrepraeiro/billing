@@ -44,7 +44,6 @@ describe('ChangeCustomerCommandHandler', () => {
         })
 
         it('current aggregate customerId should be equal newCustomerId', () => {            
-    
             aggregate.customerId.should.equal(newCustomerId)
         })
     })

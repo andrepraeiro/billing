@@ -3,6 +3,7 @@ import { Order } from '../../Domain/Order/order.aggregate'
 export class CreateOrderCommandHandler {
     constructor(repository) {
         this.repository = repository
+        this.type = 'CreateOrder'
     }
 
     handle(message) {

@@ -26,7 +26,7 @@ describe('OrderCreated.event', () => {
         })
         
         it('event data should be OrderCreated.name', () => {
-            event.eventData.name.should.equal(OrderCreated.name())
+            event.eventData.name.should.equal('OrderCreated')
         })
     })
 
@@ -39,7 +39,7 @@ describe('OrderCreated.event', () => {
             event = new OrderCreated()
         })
         it('event data should be OrderCreated.name', () => {
-            event.eventData.name.should.equal(OrderCreated.name())
+            event.eventData.name.should.equal('OrderCreated')
         })
     })
 })

@@ -3,6 +3,7 @@ export class CreateOrderCommand {
         this.id = id
         this.orderDate = orderDate
         this.customerId = customerId
+        this.type = 'CreateOrder'
     }
 }
 

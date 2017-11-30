@@ -7,7 +7,7 @@ export class Order extends AggregateRoot {
 
     constructor(id, date, customerId) {
         super()
-        this.type = 'Order'
+        this.type = this.constructor.name
         this.id = id
         this.date = null
         this.customerId = null
@@ -17,14 +17,14 @@ export class Order extends AggregateRoot {
     }
 
     apply(event) {
-        switch (event.eventData.name) {
-            case OrderCreated.name(): {
+        switch (event.constructor.name) {
+            case 'OrderCreated' : {
                 this.id = event.id
                 this.date = event.date
                 this.customerId = event.customerId
                 break
             }
-            case CustomerChanged.name(): {
+            case 'CustomerChanged': {
                 this.customerId = event.customerId
                 break
             }

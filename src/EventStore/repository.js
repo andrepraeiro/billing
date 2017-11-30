@@ -8,7 +8,7 @@ export class Repository {
     }
 
     Save(aggregate, expectedVersion) {
-        this.storage.SaveEvents(
+        this.storage.saveEvents(
             aggregate.id,
             aggregate.type,
             aggregate.getUncommitedChanges(),
@@ -17,8 +17,8 @@ export class Repository {
 
     getById(id) {
         let storedAggregate = this.storage.getAggregate(id)
-        let aggregate = new DynamicAggregate(storedAggregate.type)
-        aggregate.loadsFromHistory(storedAggregate.events)
+        let aggregate = new DynamicAggregate(storedAggregate.type)        
+        aggregate.loadsFromHistory(storedAggregate.eventDescriptors)        
         return aggregate;
     }
 

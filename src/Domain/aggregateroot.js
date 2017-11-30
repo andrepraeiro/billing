@@ -15,9 +15,9 @@ export class AggregateRoot {
         this.changes = []
     }
 
-    loadsFromHistory(history) {
-        history.forEach(function (e) {
-            this.applyChange(e, { isNew: false })
+    loadsFromHistory(history) {        
+        history.forEach(function (e) {            
+            this.applyChange(e.eventData, { isNew: false })
         }, this);
     }
 
