@@ -7,7 +7,7 @@ export class Repository {
         this.storage = storage
     }
 
-    Save(aggregate, expectedVersion) {
+    save(aggregate, expectedVersion) {
         this.storage.saveEvents(
             aggregate.id,
             aggregate.type,

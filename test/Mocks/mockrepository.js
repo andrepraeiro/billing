@@ -8,8 +8,8 @@ export class MockRepository {
         this.repository = new Repository(this.storage)
     }
 
-    Save(aggregate, expectedVersion) {
-        this.repository.Save(aggregate, expectedVersion)        
+    save(aggregate, expectedVersion) {
+        this.repository.save(aggregate, expectedVersion)        
     }
     
     getById(id) {        

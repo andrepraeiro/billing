@@ -27,9 +27,9 @@ describe('App', () => {
         let newCustomerId = generateUUID();
         bus.send(new CreateOrderCommand(orderId, date, customerId))
         bus.send(new ChangeCustomerCommand(orderId,newCustomerId))
-        storage.current[0].eventDescriptors.forEach(element => {
-            console.log(element.eventData)    
-        });
+        // storage.current[0].eventDescriptors.forEach(element => {
+        //     console.log(element.eventData)    
+        // });
         
         it('bus handle', () => {            
             bus.routes.length.should.equal(2)

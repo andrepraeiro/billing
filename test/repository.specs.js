@@ -19,7 +19,7 @@ describe('Repository', () => {
             storage = new MockStorage()
             repository = new MockRepository(storage)
             aggregateRoot = new MockAggregate(id)
-            repository.Save(aggregateRoot,1)
+            repository.save(aggregateRoot,1)
         })
 
         it('storage have 1 event', () => {            
@@ -45,7 +45,7 @@ describe('Repository', () => {
             storage = new MockStorage()
             repository = new MockRepository(storage)
             aggregateRoot = new MockAggregate(id)                        
-            repository.Save(aggregateRoot,1)                      
+            repository.save(aggregateRoot,1)                      
             newAggregateRoot = repository.getById(id)                        
         })
 
