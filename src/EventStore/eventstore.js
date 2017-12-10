@@ -1,4 +1,4 @@
-export class EventStore {
+export default class EventStore {
 
     constructor(publisher) {
         this.publisher = publisher

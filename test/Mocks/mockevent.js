@@ -1,6 +1,6 @@
-import { Event } from '../../src/Events/event'
+import Event  from '../../src/Events/event'
 
-export class MockEvent extends Event {
+export default class MockEvent extends Event {
 
     static name() {
         return 'MockEvent'

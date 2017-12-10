@@ -1,4 +1,4 @@
-export class AggregateRoot {
+export default class AggregateRoot {
 
     constructor() {
         this.changes = []
@@ -17,8 +17,8 @@ export class AggregateRoot {
 
     loadsFromHistory(history) {        
         history.forEach(function (e) {            
-            this.applyChange(e.eventData, { isNew: false })
-        }, this);
+            this.applyChange(e.eventData, { isNew: false })            
+            }, this)        
     }
 
     getOptions(opt) {

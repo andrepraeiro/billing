@@ -1,7 +1,7 @@
-import {Order} from '../Domain/Order/order.aggregate'
-import {MockAggregate} from '../../test/Mocks/mockaggregate'
+import Order from '../Domain/Order/order.aggregate'
+import MockAggregate from '../../test/Mocks/mockaggregate'
 
-export class DynamicAggregate {
+export default class DynamicAggregate {
             
     constructor(name, args) {
         this.aggregates = { Order, MockAggregate }                

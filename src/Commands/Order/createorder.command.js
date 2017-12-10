@@ -1,4 +1,4 @@
-export class CreateOrderCommand {
+export default class CreateOrderCommand {
     constructor(id, orderDate, customerId){
         this.id = id
         this.orderDate = orderDate

@@ -1,5 +1,5 @@
-import { Event } from './event'
-export class OrderCreated extends Event {
+import  Event  from './event'
+export default class OrderCreated extends Event {
 
     
     constructor(id, date, customerId) {

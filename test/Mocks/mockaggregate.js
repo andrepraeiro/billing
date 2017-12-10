@@ -1,7 +1,7 @@
-import { AggregateRoot } from '../../src/Domain/aggregateroot'
-import { MockEvent } from './mockevent'
+import AggregateRoot from '../../src/Domain/aggregateroot'
+import MockEvent from './mockevent'
 
-export class MockAggregate extends AggregateRoot {
+export default class MockAggregate extends AggregateRoot {
     constructor(id) {
         super()
         this.type = 'MockAggregate'

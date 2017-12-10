@@ -1,8 +1,8 @@
-import { AggregateRoot } from '../aggregateroot'
-import { OrderCreated } from '../../Events/ordercreated.event'
-import { CustomerChanged } from '../../Events/customerchanged.event'
+import AggregateRoot from '../aggregateroot'
+import OrderCreated from '../../Events/ordercreated.event'
+import CustomerChanged from '../../Events/customerchanged.event'
 
-export class Order extends AggregateRoot {
+export default class Order extends AggregateRoot {
 
 
     constructor(id, date, customerId) {

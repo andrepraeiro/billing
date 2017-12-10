@@ -1,7 +1,7 @@
 import chai from 'chai'
 import path from 'path'
-import { AggregateRoot } from '../src/Domain/aggregateroot'
-import { MockAggregate } from './Mocks/mockaggregate'
+import  AggregateRoot  from '../src/Domain/aggregateroot'
+import  MockAggregate  from './Mocks/mockaggregate'
 
 chai.should()
 

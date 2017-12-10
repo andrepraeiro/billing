@@ -1,4 +1,4 @@
-export class FakeBus {
+export default class FakeBus {
 
     constructor(){
         this.routes = []

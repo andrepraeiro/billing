@@ -1,7 +1,7 @@
-import { AggregateRoot } from '../Domain/aggregateroot'
-import { DynamicAggregate } from './dynamicaggregate'
+import AggregateRoot from '../Domain/aggregateroot'
+import DynamicAggregate from './dynamicaggregate'
 
-export class Repository {
+export default class Repository {
 
     constructor(storage) {
         this.storage = storage

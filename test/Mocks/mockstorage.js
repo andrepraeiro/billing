@@ -1,4 +1,4 @@
-export class MockStorage {
+export default class MockStorage {
 
     constructor() {
         this.aggregate = null
