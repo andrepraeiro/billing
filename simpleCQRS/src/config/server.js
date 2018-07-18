@@ -5,10 +5,13 @@ const express  = require('express')
 const server = express()
 const allowCors = require('./cors')
 const queryParser = require('express-query-int')
+const BullShitDatabase =  require('../../lib/readModel/readModelFacade')
 
 server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
 server.use(allowCors)
+
+
 
 server.get('/', function(req, res){
     res.send('Welcome to API')
@@ -23,6 +26,13 @@ var users = [
 
 server.get('/api/users/', function(req, res, next) {
     res.send(users)
+})
+
+server.get('/api/order/', function(req, res, next){
+    const db = BullShitDatabase
+    console.log(db.getOrders())
+    res.send(BullShitDatabase)
+    next()
 })
 
 server.listen(port,function() {

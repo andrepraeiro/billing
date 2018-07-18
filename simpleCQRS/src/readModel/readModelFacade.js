@@ -1,9 +1,13 @@
-export class BullShitDatabase {
+export default class BullShitDatabase {
+    
     constructor() {
-        this.Orders = []
+        this.orders = [
+            { id: 1, date: new Date() ,customerId: '1' },
+            { id: 2, date: new Date() ,customerId: '3' },
+          ]
     }
 
-    export orderListView(handle, message) {
+    orderListView(handle, message) {
         switch (handle) {
             case 'ORDER_CREATED':
                 addOrder(message)
@@ -16,5 +20,9 @@ export class BullShitDatabase {
 
     addOrder() {
         this.addOrder.push(message)
+    }
+
+    getOrders() {
+        return this.orders
     }
 }
