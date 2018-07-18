@@ -17,7 +17,7 @@
     "nyc": "^11.3.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./src/SimpleCQRS/test --require babel-register",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./src/test --require babel-register",
     "compile": "npx babel src --out-dir lib",
     "start": "npm run compile && node ./lib/app.js"
   },
