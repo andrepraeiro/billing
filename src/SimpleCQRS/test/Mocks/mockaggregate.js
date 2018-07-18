@@ -1,5 +1,5 @@
 import AggregateRoot from '../../Domain/aggregateroot'
-import MockEvent from './mockevent'
+import MockEvent from './mockEvent'
 
 export default class MockAggregate extends AggregateRoot {
     constructor(id) {

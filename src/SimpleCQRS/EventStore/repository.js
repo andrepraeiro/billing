@@ -1,5 +1,5 @@
-import AggregateRoot from '../Domain/aggregateroot'
-import DynamicAggregate from './dynamicaggregate'
+import AggregateRoot from '../domain/aggregateRoot'
+import DynamicAggregate from './dynamicAggregate'
 
 export default class Repository {
 

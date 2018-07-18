@@ -1,4 +1,4 @@
-import Order from '../Domain/Order/order.aggregate'
+import Order from '../domain/order/orderAggregate'
 import MockAggregate from '../test/Mocks/mockaggregate'
 
 export default class DynamicAggregate {

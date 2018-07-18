@@ -1,6 +1,6 @@
 import chai from 'chai'
 import path from 'path'
-import OrderCreated from '../Events/ordercreated.event'
+import OrderCreated from '../events/orderCreatedEvent'
 
 chai.should()
 

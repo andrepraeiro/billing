@@ -1,10 +1,10 @@
 import chai from 'chai'
 import path from 'path'
-import MockRepository from './Mocks/mockrepository'
-import MockAggregate from './Mocks/mockaggregate'
-import MockStorage from './Mocks/mockstorage'
-import generateUUID from '../Common/uuidgenerator'
-import MockEvent from './Mocks/mockevent'
+import MockRepository from './mocks/mockRepository'
+import MockAggregate from './mocks/mockAggregate'
+import MockStorage from './mocks/mockStorage'
+import generateUUID from '../common/uuidGenerator'
+import MockEvent from './mocks/mockEvent'
 
 
 chai.should()

@@ -1,6 +1,6 @@
 import chai from 'chai'
 import path from 'path'
-import CreateOrderCommand from '../Commands/Order/createorder.command'
+import CreateOrderCommand from '../commands/order/createOrderCommand'
 
 chai.should()
 

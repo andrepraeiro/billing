@@ -1,6 +1,6 @@
-import Repository from '../../EventStore/repository'
-import MockStorage from './mockstorage'
-import DynamicAggregate from '../../EventStore/dynamicaggregate'
+import Repository from '../../eventStore/repository'
+import MockStorage from './mockStorage'
+import DynamicAggregate from '../../eventStore/dynamicAggregate'
 
 export default class MockRepository {
     constructor() {

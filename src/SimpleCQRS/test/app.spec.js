@@ -1,13 +1,13 @@
 import chai from 'chai'
 import path from 'path'
-import FakeBus from '../fakebus';
-import EventStore from '../EventStore/eventstore';
-import Repository from '../EventStore/repository';
-import CreateOrderCommandHandler from '../CommandHandlers/Order/createorder.commandhandler';
-import CreateOrderCommand from '../Commands/Order/createorder.command';
-import generateUUID from '../Common/uuidgenerator';
-import ChangeCustomerCommandHandler from '../CommandHandlers/Order/changecustomer.commandhandler';
-import ChangeCustomerCommand from '../Commands/Order/changecustomer.command';
+import FakeBus from '../fakeBus';
+import EventStore from '../eventStore/eventStore';
+import Repository from '../eventStore/repository';
+import CreateOrderCommandHandler from '../commandHandlers/order/createOrderCommandHandler';
+import CreateOrderCommand from '../commands/order/createOrderCommand';
+import generateUUID from '../common/uuidGenerator';
+import ChangeCustomerCommandHandler from '../commandHandlers/order/changeCustomerCommandHandler';
+import ChangeCustomerCommand from '../commands/order/changeCustomerCommand';
 
 
 chai.should()
