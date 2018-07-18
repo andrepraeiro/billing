@@ -17,9 +17,9 @@
     "nyc": "^11.3.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --require babel-register",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./src/SimpleCQRS/test --require babel-register",
     "compile": "npx babel src --out-dir lib",
-    "start": "npm run compile && node ./lib/app.js"    
+    "start": "npm run compile && node ./lib/app.js"
   },
   "keywords": [],
   "author": "Andre Praeiro",

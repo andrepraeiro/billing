@@ -1,10 +1,10 @@
 import chai from 'chai'
 import path from 'path'
-import CreateOrderCommandHandler from '../src/CommandHandlers/Order/createorder.commandhandler'
+import CreateOrderCommandHandler from '../CommandHandlers/Order/createorder.commandhandler'
 import MockRepository from './Mocks/mockrepository'
-import CreateOrderCommand from '../src/Commands/Order/createorder.command'
-import generateUUID from '../src/Common/uuidgenerator'
-import Order from '../src/Domain/Order/order.aggregate'
+import CreateOrderCommand from '../Commands/Order/createorder.command'
+import generateUUID from '../Common/uuidgenerator'
+import Order from '../Domain/Order/order.aggregate'
 
 chai.should()
 

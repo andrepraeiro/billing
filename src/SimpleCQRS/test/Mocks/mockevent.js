@@ -1,4 +1,4 @@
-import Event  from '../../src/Events/event'
+import Event  from '../../Events/event'
 
 export default class MockEvent extends Event {
 
