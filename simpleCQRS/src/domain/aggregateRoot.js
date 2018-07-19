@@ -37,6 +37,7 @@ export default class AggregateRoot {
         opt.child.apply(event);
         if (opt.isNew)         
             this.changes.push(event)                            
+        console.log(this.changes)
     }
 
     //apply(event) {

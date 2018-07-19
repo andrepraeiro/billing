@@ -9,11 +9,12 @@ export default class Order extends AggregateRoot {
         super()
         this.type = this.constructor.name
         this.id = id
-        this.date = null
-        this.customerId = null
-        if (id) {            
+        this.date = date
+        this.customerId = customerId
+        if (id) {                       
             super.applyChange(new OrderCreated(id, date, customerId), { child: this })
-        }                    
+        }        
+        
     }
 
     apply(event) {
