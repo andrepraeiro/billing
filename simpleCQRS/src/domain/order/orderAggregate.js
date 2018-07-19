@@ -3,26 +3,25 @@ import OrderCreated from '../../events/orderCreatedEvent'
 import CustomerChanged from '../../events/customerChangedEvent'
 
 export default class Order extends AggregateRoot {
-
-
-    constructor(id, date, customerId) {
+    constructor(id, date, customerId) {        
         super()
-        this.type = this.constructor.name
-        this.id = id
-        this.date = date
-        this.customerId = customerId
-        if (id) {                       
-            super.applyChange(new OrderCreated(id, date, customerId), { child: this })
-        }        
-        
+        // this.type = this.constructor.name
+        // this.id = id
+        // this.date = date
+        // this.customerId = customerId
+        //if (id) {        
+        super.applyChange(new OrderCreated(id, date, customerId), { child: this })
+        //}
     }
 
     apply(event) {
+        console.log('child apply method')
         switch (event.constructor.name) {
-            case 'OrderCreated' : {
+            case 'OrderCreated': {
                 this.id = event.id
                 this.date = event.date
                 this.customerId = event.customerId
+                console.log(this)
                 break
             }
             case 'CustomerChanged': {
@@ -32,8 +31,7 @@ export default class Order extends AggregateRoot {
         }
     }
 
-    changeCustomer(customerId){        
-        super.applyChange(new CustomerChanged(this.id, customerId), {child: this})               
+    changeCustomer(customerId) {
+        super.applyChange(new CustomerChanged(this.id, customerId), { child: this })
     }
 }
-

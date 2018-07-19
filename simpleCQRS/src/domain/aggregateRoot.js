@@ -32,12 +32,11 @@ export default class AggregateRoot {
         return opt
     }
 
-    applyChange(event, opt) {
+    applyChange(event, opt) {        
         opt = this.getOptions(opt)
         opt.child.apply(event);
         if (opt.isNew)         
-            this.changes.push(event)                            
-        console.log(this.changes)
+            this.changes.push(event)                                    
     }
 
     //apply(event) {

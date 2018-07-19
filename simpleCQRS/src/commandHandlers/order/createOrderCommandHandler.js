@@ -6,11 +6,9 @@ export default class CreateOrderCommandHandler {
         this.type = 'CreateOrder'
     }
 
-    handle(message) {
-        console.log(message)
+    handle(message) {        
         const order = new Order(message.id, message.orderDate, message.customerId)
         this.repository.save(order, -1)
-        console.log(this.repository.storage)
         return order
     }
 }

@@ -24,10 +24,7 @@ export default class FakeBus {
     send(command) {
         let handlers = []
         var hand = this.routes.find( e => e.type == command.type)        
-        var order = hand.handle(command)
-        console.log(order)
-
-
+        hand.handle(command)        
         // handlers.push(this.routes[this.routes.findIndex(p => p.type == command.type)])
         // if (handlers) {
         //     if (handlers.length != 1) throw 'Cannot send to more than one handler'
