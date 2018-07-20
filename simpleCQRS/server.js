@@ -54,9 +54,5 @@ srv.get('/api/orders/:id', (req, res) => {
 srv.put('/api/orders/:id', (req, res) => {
     const command = new ChangeCustomerCommand(req.params.id, req.body.customerId)
     bus.send(command)
-    res.send(storage.current)
-    // res.send({
-    //     id: req.params.id,
-    //     customerId: req.body.customerId
-    // })
+    res.send(storage.current)    
 })

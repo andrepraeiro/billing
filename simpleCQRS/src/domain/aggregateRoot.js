@@ -38,8 +38,4 @@ export default class AggregateRoot {
         opt.child.apply(event)        
         if (opt.isNew) this.changes.push(event)
     }
-
-    //apply(event) {
-    //    throw new Error('Apply(event) Not implemented')
-    //}
 }
