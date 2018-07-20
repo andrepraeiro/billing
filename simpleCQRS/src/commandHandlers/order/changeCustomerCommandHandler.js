@@ -7,9 +7,9 @@ export default class ChangeCustomerCommandHandler {
     }
 
     handle(message) {
-        const order = this.repository.getById(message.id)
+        const order = this.repository.getById(message.id)                
         order.changeCustomer(message.customerId)     
-        this.repository.save(order, -1)           
-        return order
+        this.repository.save(order, order.version)                   
+        return order        
     }
 }

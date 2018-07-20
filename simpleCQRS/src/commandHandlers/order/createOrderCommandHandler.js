@@ -8,7 +8,7 @@ export default class CreateOrderCommandHandler {
 
     handle(message) {        
         const order = new Order(message.id, message.orderDate, message.customerId)
-        this.repository.save(order, -1)
+        this.repository.save(order, 0)
         return order
     }
 }

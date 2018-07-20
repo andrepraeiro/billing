@@ -18,7 +18,6 @@ export default class Repository {
     getById(id) {        
         const storedAggregate = this.storage.getAggregate(id)        
         const aggregate = new DynamicAggregate(storedAggregate.type)        
-        console.log(storedAggregate.eventDescriptors)
         aggregate.loadsFromHistory(storedAggregate.eventDescriptors)        
         return aggregate;
     }

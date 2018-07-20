@@ -6,9 +6,6 @@ export default class Order extends AggregateRoot {
     constructor(id, date, customerId) {
         super()
         this.type = this.constructor.name
-        // this.id = id
-        // this.date = date
-        // this.customerId = customerId
         if (id) {
             super.applyChange(new OrderCreated(id, date, customerId), { child: this })
         }

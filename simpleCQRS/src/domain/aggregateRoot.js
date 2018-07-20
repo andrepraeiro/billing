@@ -15,8 +15,11 @@ export default class AggregateRoot {
     }
 
     loadsFromHistory(history) {
-        history.forEach(e => {
+        let i = 0
+        history.forEach(e => {            
             this.applyChange(e.eventData, { isNew: false }, this)
+            i++
+            this.version = i
         })
     }
 
@@ -32,7 +35,7 @@ export default class AggregateRoot {
 
     applyChange(event, opt) {
         opt = this.getOptions(opt)
-        opt.child.apply(event)
+        opt.child.apply(event)        
         if (opt.isNew) this.changes.push(event)
     }
 
