@@ -1,4 +1,3 @@
-import orderCreatedEvent from '../events/orderCreatedEvent'
 
 export default class EventHandler {
     constructor(database) {
@@ -9,6 +8,10 @@ export default class EventHandler {
         switch (event.eventData.name) {
             case 'OrderCreated': {
                 this.rm.addOrder(event)
+                break
+            }
+            case 'CustomerChanged': {
+                this.rm.changeCustomer(event)
                 break
             }
             default:

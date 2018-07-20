@@ -23,12 +23,18 @@ export default class BullShitDatabase {
         this.orders.push(order)
     }
 
+    changeCustomer(message) {
+        const order =  this.orders.find(e => e.id == message.id)
+        if (order)
+            order.customerId = message.customerId
+    }
+
     getOrders() {
         return this.orders
     }
 
     getOrder(id) {
-        const order = this.orders.find(e => (e.id == id))
+        const order = this.orders.find(e => e.id == id)
         if (!order)
             return {
                 message: 'Order not found.',
