@@ -6,17 +6,22 @@ export default class EventStore {
     }
 
     saveEvents(aggregateId, type, events, expectedVersion) {
-        let eventDescriptors =
-            this.current[this.current.findIndex(p => p.aggregateId == aggregateId)] == undefined ? [] :
-                this.current[this.current.findIndex(p => p.aggregateId == aggregateId)].eventDescriptors
+        // let eventDescriptors =
+        //     this.current[this.current.findIndex(p => p.aggregateId == aggregateId)] == undefined ? [] :
+        //         this.current[this.current.findIndex(p => p.aggregateId == aggregateId)].eventDescriptors
 
-        if (!this.current[this.current.findIndex(p => p.aggregateId == aggregateId)]) {
+        // if (!this.current[this.current.findIndex(p => p.aggregateId == aggregateId)]) {
+        //     eventDescriptors = []
+        //     this.current.push({ aggregateId: aggregateId, type: type, eventDescriptors: eventDescriptors })
+        // }
+        // else if (eventDescriptors[eventDescriptors.length - 1].version !=
+        //     expectedVersion && expectedVersion != -1) {
+        //     throw 'Concurrency exception'
+        // }
+        let eventDescriptors = this.current.find( a=> a.aggregateId == aggregateId)
+        if (!eventDescriptors){
+            this.current.push({aggregateId: aggregateId, type: type, eventDescriptors: []})
             eventDescriptors = []
-            this.current.push({ aggregateId: aggregateId, type: type, eventDescriptors: eventDescriptors })
-        }
-        else if (eventDescriptors[eventDescriptors.length - 1].version !=
-            expectedVersion && expectedVersion != -1) {
-            throw 'Concurrency exception'
         }
         
         let i = expectedVersion
@@ -30,7 +35,8 @@ export default class EventStore {
             })                                    
             this.publisher.publish(event)
         });
-        this.current[this.current.findIndex(p => p.aggregateId == aggregateId)].eventDescriptors = eventDescriptors
+        this.current.find( a=> a.aggregateId == aggregateId).eventDescriptors = eventDescriptors
+        console.log(this.current)
     }
 
     getEventsForAggregate(aggregateId) {

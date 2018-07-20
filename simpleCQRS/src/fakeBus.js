@@ -1,7 +1,8 @@
 export default class FakeBus {
 
-    constructor(){
+    constructor(eventHandler){
         this.routes = []
+        this.eventHandler = eventHandler
     }
     
     registerHandler(handler) {
@@ -35,15 +36,16 @@ export default class FakeBus {
     }
 
     publish(event) {        
-        let handlers = []        
-        if (this.routes.findIndex(p => p.type == event.constructor.name) == -1) 
-            return
-        handlers = this.routes[this.routes.findIndex(p => p.type == event.constructor.name)]
+        this.eventHandler.notify(event)
+        // let handlers = []        
+        // if (this.routes.findIndex(p => p.type == event.constructor.name) == -1) 
+        //     return
+        // handlers = this.routes[this.routes.findIndex(p => p.type == event.constructor.name)]
         
-        handlers.forEach(handler => {
-            let hand = handler
-            hand(event)
-        });
+        // handlers.forEach(handler => {
+        //     let hand = handler
+        //     hand(event)
+        // });
 
     }
 

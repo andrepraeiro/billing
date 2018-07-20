@@ -14,14 +14,12 @@ export default class Order extends AggregateRoot {
         //}
     }
 
-    apply(event) {
-        console.log('child apply method')
+    apply(event) {        
         switch (event.constructor.name) {
             case 'OrderCreated': {
                 this.id = event.id
                 this.date = event.date
-                this.customerId = event.customerId
-                console.log(this)
+                this.customerId = event.customerId                
                 break
             }
             case 'CustomerChanged': {

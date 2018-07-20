@@ -18,11 +18,17 @@ export default class BullShitDatabase {
         }
     }
 
-    addOrder() {
-        this.addOrder.push(message)
+    addOrder(message) {
+        const order = {
+            id: message.id,
+            date: message.date,
+            customerId: message.customerId
+        }
+        this.orders.push(order)             
     }
 
     getOrders() {
         return this.orders
     }
 }
+

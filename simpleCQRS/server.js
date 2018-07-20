@@ -1,18 +1,23 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import cors from './src/config/cors'
-import BullShitDatabase from './src/readModel/readModelFacade'
 import CreateOrderCommand from './src/commands/order/createOrderCommand'
 import FakeBus from './src/fakeBus'
-import EventStore  from './src/eventStore/eventStore'
-import Repository  from './src/eventStore/repository'
+import EventStore from './src/eventStore/eventStore'
+import Repository from './src/eventStore/repository'
 import CreateOrderCommandHandler from './src/commandHandlers/order/createOrderCommandHandler'
+import EventHandler from './src/readModel/eventHandler'
+import BullShitDatabase from './src/readModel/readModelFacade'
 
+import Observable from './src/observerPattern/observable'
 
 const srv = express()
 const port = 3005
-const db = new BullShitDatabase()
-const bus = new FakeBus()
+const database = new BullShitDatabase()
+const eventHandler = new EventHandler(database)
+const bus = new FakeBus(eventHandler)
+const storage = new EventStore(bus)
+const repository = new Repository(storage)
+const handler = new CreateOrderCommandHandler(repository)
 srv.use(express.urlencoded({ extended: true }))
 srv.use(express.json())
 srv.use(cors)
@@ -31,10 +36,19 @@ srv.get('/api/order/', (req, res, next) => {
 
 srv.post('/api/order/', (req, res) => {
     const command = new CreateOrderCommand(0, req.body.date, req.body.customerId)
-    const storage = new EventStore(bus)
-    const repository = new Repository(storage)
-    const commands = new CreateOrderCommandHandler(repository)    
-    bus.registerHandler(commands)
+    bus.registerHandler(handler)
     bus.send(command)
-    res.send('inserido com sucesso!')
+    res.send(storage.current)
 })
+
+srv.get('/obs', (req, res) => {
+    const observer = new Observable()
+    const s = new Subs()
+    observer.subscribe(s)
+    observer.notify('data')
+    res.send('conclude')
+})
+
+class Subs {
+    notificate(data) {}
+}
