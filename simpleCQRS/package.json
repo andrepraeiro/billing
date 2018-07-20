@@ -22,9 +22,7 @@
     "pm2": "^3.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./src/test --require babel-register",
-    "compile": "npx babel src --out-dir lib",
-    "start": "npm run compile && node ./lib/app.js",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./src/test --require babel-register",    
     "dev": "nodemon ./server.js --exec babel-node",
     "production": "pm2 start ./server.js --name billing"
   },
