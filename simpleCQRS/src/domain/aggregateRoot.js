@@ -1,5 +1,4 @@
 export default class AggregateRoot {
-
     constructor() {
         this.changes = []
         this.id = null
@@ -15,15 +14,14 @@ export default class AggregateRoot {
         this.changes = []
     }
 
-    loadsFromHistory(history) {        
-        history.forEach(function (e) {            
-            this.applyChange(e.eventData, { isNew: false })            
-            }, this)        
+    loadsFromHistory(history) {
+        history.forEach(e => {
+            this.applyChange(e.eventData, { isNew: false }, this)
+        })
     }
 
     getOptions(opt) {
-        if (!opt)
-            opt = { isNew: true, child: this }
+        if (!opt) opt = { isNew: true, child: this }
         else if (!opt.isNew || !opt.child)
             opt = {
                 child: !opt.child ? this : opt.child,
@@ -32,11 +30,10 @@ export default class AggregateRoot {
         return opt
     }
 
-    applyChange(event, opt) {        
+    applyChange(event, opt) {
         opt = this.getOptions(opt)
-        opt.child.apply(event);
-        if (opt.isNew)         
-            this.changes.push(event)                                    
+        opt.child.apply(event)
+        if (opt.isNew) this.changes.push(event)
     }
 
     //apply(event) {

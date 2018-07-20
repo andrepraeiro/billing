@@ -18,10 +18,10 @@ export default class EventStore {
         //     expectedVersion && expectedVersion != -1) {
         //     throw 'Concurrency exception'
         // }
-        let eventDescriptors = this.current.find( a=> a.aggregateId == aggregateId)
-        if (!eventDescriptors){
-            this.current.push({aggregateId: aggregateId, type: type, eventDescriptors: []})
-            eventDescriptors = []
+        let eventDescriptors = []
+        const aggregate = this.current.find( a=> a.aggregateId == aggregateId)
+        if (!aggregate){
+            this.current.push({aggregateId: aggregateId, type: type, eventDescriptors: []})            
         }
         
         let i = expectedVersion
@@ -36,7 +36,6 @@ export default class EventStore {
             this.publisher.publish(event)
         });
         this.current.find( a=> a.aggregateId == aggregateId).eventDescriptors = eventDescriptors
-        console.log(this.current)
     }
 
     getEventsForAggregate(aggregateId) {
@@ -44,6 +43,6 @@ export default class EventStore {
     }
 
     getAggregate(aggregateId) {
-        return this.current[this.current.findIndex(p => p.aggregateId == aggregateId)]
+        return this.current.find(p => p.aggregateId == aggregateId)
     }
 }

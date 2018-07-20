@@ -1,20 +1,16 @@
 export default class BullShitDatabase {
-    
     constructor() {
-        this.orders = [
-            { id: 1, date: new Date() ,customerId: '1' },
-            { id: 2, date: new Date() ,customerId: '3' },
-          ]
+        this.orders = [{ id: 1, date: new Date(), customerId: '1' }, { id: 2, date: new Date(), customerId: '3' }]
     }
 
     orderListView(handle, message) {
         switch (handle) {
             case 'ORDER_CREATED':
                 addOrder(message)
-                break;
-        
+                break
+
             default:
-                break;
+                break
         }
     }
 
@@ -24,11 +20,20 @@ export default class BullShitDatabase {
             date: message.date,
             customerId: message.customerId
         }
-        this.orders.push(order)             
+        this.orders.push(order)
     }
 
     getOrders() {
         return this.orders
     }
-}
 
+    getOrder(id) {
+        const order = this.orders.find(e => (e.id == id))
+        if (!order)
+            return {
+                message: 'Order not found.',
+                orderId: id
+            }
+        else return order
+    }
+}

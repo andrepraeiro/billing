@@ -3,10 +3,11 @@ import Order from '../../domain/order/orderAggregate'
 export default class ChangeCustomerCommandHandler {
     constructor(repository) {
         this.repository = repository
+        this.type = 'ChangeCustomer'
     }
 
     handle(message) {
-        let order = this.repository.getById(message.id)
+        const order = this.repository.getById(message.id)
         order.changeCustomer(message.customerId)     
         this.repository.save(order, -1)           
         return order

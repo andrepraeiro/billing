@@ -23,8 +23,7 @@ export default class FakeBus {
     }
 
     send(command) {
-        let handlers = []
-        var hand = this.routes.find( e => e.type == command.type)        
+        const hand = this.routes.find( e => e.type == command.type)        
         hand.handle(command)        
         // handlers.push(this.routes[this.routes.findIndex(p => p.type == command.type)])
         // if (handlers) {
