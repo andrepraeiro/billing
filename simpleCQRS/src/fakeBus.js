@@ -16,6 +16,7 @@ export default class FakeBus {
 
     send(command) {
         const hand = this.routes.find( e => e.type == command.type)        
+        if (hand)
         hand.handle(command)                
     }
 

@@ -29,7 +29,7 @@ export default class EventStore {
     }
 
     getEventsForAggregate(aggregateId) {
-        return this.current[this.current.findIndex(p => p.aggregateId == aggregateId)].eventDescriptors.eventData
+        return this.current.find(p => p.aggregateId == aggregateId).eventDescriptors
     }
 
     getAggregate(aggregateId) {
