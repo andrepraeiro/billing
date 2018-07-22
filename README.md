@@ -1,4 +1,4 @@
-#CQRS + Event Source + DDD
+# CQRS + Event Source + DDD
 
 
  [![Coverage Status][coveralls-image]][coveralls-url]
@@ -7,7 +7,7 @@
 This application is a test, a case of study.
 It is based on Gregory Young CQRS Simple (https://github.com/gregoryyoung/m-r).
 
-##What is this?
+## What is this?
 
 This a API based on express.js that aim to store the generated events in a local memory event store. That is all events are deleted when the application is restarted.
 
@@ -32,7 +32,7 @@ Return a specific order by id
 
 Update the customerId on a specific order by id
 
-##Forward
+## Forward
 
 This project still under construction, so there are so much to do. In this list include: code refactoring, message bus and more.
 
