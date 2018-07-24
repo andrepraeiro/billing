@@ -1,7 +1,7 @@
 # CQRS + Event Source + DDD
 
 
- [![Coverage Status][coveralls-image]][coveralls-url]
+ [![Coverage Status](https://coveralls.io/repos/github/andrepraeiro/billing/badge.svg?branch=master)](https://coveralls.io/github/andrepraeiro/billing?branch=master)
 
 
 This application is a test, a case of study.
@@ -35,6 +35,3 @@ Update the customerId on a specific order by id
 ## Forward
 
 This project still under construction, so there are so much to do. In this list include: code refactoring, message bus and more.
-
-[coveralls-image]: https://coveralls.io/repos/andrepraeiro/billing/badge.svg?branch=master&service=github
-[coveralls-url]: https://coveralls.io/github/andrepraeiro/billing?branch=master
