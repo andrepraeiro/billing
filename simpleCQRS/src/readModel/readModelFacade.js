@@ -3,17 +3,6 @@ export default class BullShitDatabase {
         this.orders = [{ id: 1, date: new Date(), customerId: '1' }, { id: 2, date: new Date(), customerId: '3' }]
     }
 
-    orderListView(handle, message) {
-        switch (handle) {
-            case 'ORDER_CREATED':
-                addOrder(message)
-                break
-
-            default:
-                break
-        }
-    }
-
     addOrder(message) {
         const order = {
             id: message.id,
@@ -21,12 +10,19 @@ export default class BullShitDatabase {
             customerId: message.customerId
         }
         this.orders.push(order)
+        return order
     }
 
     changeCustomer(message) {
-        const order =  this.orders.find(e => e.id == message.id)
-        if (order)
+        const order = this.orders.find(e => e.id == message.id)
+        if (order) {
             order.customerId = message.customerId
+            return order
+        } else
+            return {
+                message: 'Order not found.',
+                orderId: message.id
+            }
     }
 
     getOrders() {

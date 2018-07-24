@@ -26,16 +26,69 @@ describe('App', () => {
         const orderId = generateUUID()
         const date = new Date()
         const customerId = generateUUID();
-        //const newCustomerId = generateUUID();
-        bus.send(new CreateOrderCommand(orderId, date, customerId))
-        //bus.send(new ChangeCustomerCommand(orderId,newCustomerId))
-        // storage.current[0].eventDescriptors.forEach(element => {
-        //     console.log(element.eventData)    
-        // });
-        
+        const order = new CreateOrderCommand(orderId, date, customerId)
+        bus.send(order)        
         it('bus handle', () => {            
             bus.routes.length.should.equal(2)
         })        
+        it('Database getOrders should be 3', () => {            
+            database.getOrders().length.should.equal(3)
+        })        
+        it('Database getOrder should be order', () => {            
+            const orderRet = database.getOrder(order.id)
+            orderRet.id.should.equal(order.id)
+            orderRet.date.should.equal(order.orderDate)
+            orderRet.customerId.should.equal(order.customerId)
+        })        
+        it('Database getOrder id not found', () => {            
+            const newId = generateUUID()
+            const orderRet = database.getOrder(newId)
+            orderRet.orderId.should.equal(newId)
+            orderRet.message.should.equal('Order not found.')            
+        })        
+        it('Database addOrder', () => {            
+            const message = {
+                id: orderId,
+                date: date,
+                customerId: customerId
+            }
+            const orderRet= database.addOrder(message)            
+            orderRet.id.should.equal(message.id)
+            orderRet.date.should.equal(message.date)
+            orderRet.customerId.should.equal(message.customerId)
+        })        
+        it('Database changeCustomer', () => {            
+            const message = {
+                id: orderId,
+                date: date,
+                customerId: customerId
+            }
+            const changeCustomerMessage = {
+                id: orderId,
+                customerId: generateUUID()
+            }
+            database.addOrder(message)            
+            const orderRet = database.changeCustomer(changeCustomerMessage)            
+            orderRet.id.should.equal(changeCustomerMessage.id)
+            orderRet.date.should.equal(message.date)
+            orderRet.customerId.should.equal(changeCustomerMessage.customerId)
+        })        
+        it('Database changeCustomer wrong id', () => {            
+            const message = {
+                id: orderId,
+                date: date,
+                customerId: customerId
+            }
+            const changeCustomerMessage = {
+                id: generateUUID(),
+                customerId: generateUUID()
+            }
+            database.addOrder(message)            
+            const orderRet = database.changeCustomer(changeCustomerMessage)            
+            orderRet.orderId.should.equal(changeCustomerMessage.id)
+            orderRet.message.should.equal('Order not found.')            
+        })        
     })
 })
+
 
